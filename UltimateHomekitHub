@@ -73,8 +73,8 @@ echo "----------------------------------------------------------------"
 sudo mkdir mosquitto
 sudo mkdir mosquitto/config/
 sudo mkdir mosquitto/data/
-sudo wget https://raw.githubusercontent.com/EddieDSuza/maxilife/main/mosquitto.conf -P /home/pi/mosquitto/config/
-sudo docker run -it --name MQTT --restart unless-stopped --net=host -tid -p 1883:1883 -v $(pwd)/mosquitto:/mosquitto/ eclipse-mosquitto
+sudo wget https://raw.githubusercontent.com/robjporter/techwitheddie/main/mosquitto.conf -P /home/pi/mosquitto/config/
+sudo docker run -it --name MQTT --restart unless-stopped --net=host -tid -v $(pwd)/mosquitto:/mosquitto/ eclipse-mosquitto
 echo "----------------------------------------------------------------"
 echo "MQTT Setup Completed"
 echo "----------------------------------------------------------------"
@@ -85,9 +85,9 @@ echo " "
 echo "----------------------------------------------------------------"
 echo "Commence Zigbee2MQTT Setup"
 echo "----------------------------------------------------------------"
-wget https://raw.githubusercontent.com/EddieDSuza/techwitheddie/main/configuration.yaml -P data
+wget hhttps://raw.githubusercontent.com/robjporter/techwitheddie/main/configuration.yaml -P data
 echo " "
-sudo docker run --name zigbee2mqtt --device=/dev/ttyACM0 --net host --restart unless-stopped -v $(pwd)/data:/app/data -v /run/udev:/run/udev:ro -e TZ=Asia/Dubai koenkk/zigbee2mqtt
+sudo docker run --name zigbee2mqtt --device=/dev/ttyACM0 --net host --restart unless-stopped -v $(pwd)/data:/app/data -v /run/udev:/run/udev:ro -e TZ=Europe/London koenkk/zigbee2mqtt
 echo "----------------------------------------------------------------"
 echo "Z2M Interface is reachable at homebridge.local:8081"
 echo "----------------------------------------------------------------"
